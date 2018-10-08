@@ -21,4 +21,4 @@
 ## Stages
 - Create the supporting files : [STEP_1.md](STEP_1.md)
 - Simple query : [STEP_2.md](STEP_2.md) `git clone https://github.com/dougo-chris/phoenix-graphql.git --branch=STEP_2`
-- Nested queries : [STEP_3.md](STEP_3.md)
+- Complex queries : [STEP_3.md](STEP_3.md)
