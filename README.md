@@ -17,8 +17,10 @@
 - List books, authors and reviews with nested data
 - Show any book, author or review with nested data, filtered by id
 - Return results with limits and offsets
+- Subscribe to changes on a book
 
 ## Stages
 - Create the supporting files : [STEP_1.md](STEP_1.md)
 - Simple query : [STEP_2.md](STEP_2.md) `git clone https://github.com/dougo-chris/phoenix-graphql.git --branch=STEP_2`
-- Complex queries : [STEP_3.md](STEP_3.md)
+- Complex queries : [STEP_3.md](STEP_3.md) `git clone https://github.com/dougo-chris/phoenix-graphql.git --branch=STEP_3`
+- Subscriptions : [STEP_4.md](STEP_4.md) `git clone https://github.com/dougo-chris/phoenix-graphql.git --branch=STEP_4`

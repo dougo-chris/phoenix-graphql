@@ -1,7 +1,8 @@
 defmodule BookstoreWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :bookstore
+  use Absinthe.Phoenix.Endpoint
 
-  socket "/socket", BookstoreWeb.UserSocket
+  socket "/socket", BookstoreWeb.GraphqlSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #

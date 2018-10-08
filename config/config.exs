@@ -14,8 +14,7 @@ config :bookstore, BookstoreWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "aElYkxWPesGVsBY+ZnBPqGGnFr+DQkjJQEwy2l4DyO1PflIEdC7w+m958p6pP8xE",
   render_errors: [view: BookstoreWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Bookstore.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Bookstore.Graphql.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,

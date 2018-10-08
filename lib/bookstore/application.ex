@@ -12,6 +12,8 @@ defmodule Bookstore.Application do
       supervisor(Bookstore.Repo, []),
       # Start the endpoint when the application starts
       supervisor(BookstoreWeb.Endpoint, []),
+      supervisor(Absinthe.Subscription, [BookstoreWeb.Endpoint])
+
       # Start your own worker by calling: Bookstore.Worker.start_link(arg1, arg2, arg3)
       # worker(Bookstore.Worker, [arg1, arg2, arg3]),
     ]

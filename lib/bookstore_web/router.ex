@@ -26,6 +26,7 @@ defmodule BookstoreWeb.Router do
     post "/graphql", BookstoreWeb.GraphqlController, :query
 
     forward "/graphiql", Absinthe.Plug.GraphiQL,
-      schema: Bookstore.Graphql.Query
+      schema: Bookstore.Graphql.Query,
+      socket: BookstoreWeb.GraphqlSocket
   end
 end

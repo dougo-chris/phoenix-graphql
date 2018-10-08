@@ -49,4 +49,14 @@ defmodule Bookstore.Graphql.Query do
       resolve &ReviewResolver.review_list/3
     end
   end
+
+  subscription do
+    field :book_updated, :book do
+      arg :id, :id
+
+      config(fn args, _context ->
+        {:ok, topic: args.id}
+      end)
+    end
+  end
 end
