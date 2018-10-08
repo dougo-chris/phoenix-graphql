@@ -48,7 +48,7 @@ defmodule Bookstore.Graphql.BookResolver do
   end
 
   def book_list(_parent, args, _resolution) do
-    {offset, limit} = limit(args)
+    {offset, limit} = offset_limit(args)
 
     books =
       Book
@@ -59,10 +59,10 @@ defmodule Bookstore.Graphql.BookResolver do
     {:ok, books}
   end
 
-  defp limit(%{offset: offset, limit: limit}), do: {offset, limit}
-  defp limit(%{offset: offset}), do: {offset, @limit_default}
-  defp limit(%{limit: limit}), do: {0, limit}
-  defp limit(_), do: {0, @limit_default}
+  defp offset_limit(%{offset: offset, limit: limit}), do: {offset, limit}
+  defp offset_limit(%{offset: offset}), do: {offset, @limit_default}
+  defp offset_limit(%{limit: limit}), do: {0, limit}
+  defp offset_limit(_), do: {0, @limit_default}
 
 end
 ```
@@ -102,7 +102,7 @@ end
 
 #### Add the graphql endpoint to the router
 
-Edit `lib/bookstore_web/router`
+Edit `lib/bookstore_web/router.ex`
 
 ```
   ...
@@ -123,7 +123,7 @@ Edit `lib/bookstore_web/router`
 
 #### Create the GraphqlController
 
-Edit `lib/bookstore_web/controllers/graphql_controlller`
+Edit `lib/bookstore_web/controllers/graphql_controlller.ex`
 
 ```
 defmodule BookstoreWeb.GraphqlController do

@@ -1,11 +1,11 @@
 defmodule Bookstore.Graphql.BookResolver do
   @moduledoc false
+
   import Ecto.Query
+  import Bookstore.Graphql.ParamsHelper
 
   alias Bookstore.Repo
   alias Bookstore.Schema.Book
-
-  @limit_default 10
 
   def book_get(_parent, %{id: id}, _resolution) do
     case Repo.get_by(Book, id: id) do
@@ -21,7 +21,7 @@ defmodule Bookstore.Graphql.BookResolver do
   end
 
   def book_list(_parent, args, _resolution) do
-    {offset, limit} = limit(args)
+    {offset, limit} = offset_limit(args)
 
     books =
       Book
@@ -31,10 +31,5 @@ defmodule Bookstore.Graphql.BookResolver do
 
     {:ok, books}
   end
-
-  defp limit(%{offset: offset, limit: limit}), do: {offset, limit}
-  defp limit(%{offset: offset}), do: {offset, @limit_default}
-  defp limit(%{limit: limit}), do: {0, limit}
-  defp limit(_), do: {0, @limit_default}
 
 end
