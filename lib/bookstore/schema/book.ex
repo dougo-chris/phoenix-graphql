@@ -13,6 +13,7 @@ defmodule Bookstore.Schema.Book do
 
     field :title, :string
     field :pages, :integer
+    field :likes, :integer
 
     has_many :reviews, Review, foreign_key: :book_id, references: :id, on_delete: :delete_all
   end

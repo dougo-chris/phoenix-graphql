@@ -10,6 +10,7 @@ defmodule Bookstore.Graphql.BookType do
     field :author_id, :integer
     field :title, :string
     field :pages, :integer
+    field :likes, :integer
 
     field :author, :author, resolve: dataloader(:item_loader, :author)
 

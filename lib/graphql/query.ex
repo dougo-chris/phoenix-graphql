@@ -59,4 +59,13 @@ defmodule Bookstore.Graphql.Query do
       end)
     end
   end
+
+  mutation do
+    field :book_liked, :book do
+      arg :id, non_null(:integer)
+
+      resolve &BookResolver.book_liked/3
+    end
+  end
+
 end
