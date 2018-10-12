@@ -2,7 +2,7 @@
 
 #### Add the likes field to the books schema & graphql type
 
-- Note : The original database migration has the "likes" column
+- Note : The original database migration has the `likes` column
 
 Edit `lib/bookstore/schema/book.ex`
 
