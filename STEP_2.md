@@ -20,6 +20,39 @@ defmodule Bookstore.Graphql.BookType do
 end
 ```
 
+#### Create the graphql query
+
+Edit `lib/graphql/query.ex`
+
+```
+defmodule Bookstore.Graphql.Query do
+  @moduledoc false
+
+  use Absinthe.Schema
+
+  alias Bookstore.Graphql.BookResolver
+
+  import_types Bookstore.Graphql.BookType
+
+  def plugins do
+    Absinthe.Plugin.defaults()
+  end
+
+  query do
+    field :book, :book do
+      arg :id, :id
+      resolve &BookResolver.book_get/3
+    end
+
+    field :books, list_of(:book) do
+      arg :offset, :integer
+      arg :limit, :integer
+      resolve &BookResolver.book_list/3
+    end
+  end
+end
+```
+
 #### Create the book resolver
 
 Edit `lib/graphql/types/book_resolver.ex`
@@ -64,39 +97,6 @@ defmodule Bookstore.Graphql.BookResolver do
   defp offset_limit(%{limit: limit}), do: {0, limit}
   defp offset_limit(_), do: {0, @limit_default}
 
-end
-```
-
-#### Create the graphql query
-
-Edit `lib/graphql/query.ex`
-
-```
-defmodule Bookstore.Graphql.Query do
-  @moduledoc false
-
-  use Absinthe.Schema
-
-  alias Bookstore.Graphql.BookResolver
-
-  import_types Bookstore.Graphql.BookType
-
-  def plugins do
-    Absinthe.Plugin.defaults()
-  end
-
-  query do
-    field :book, :book do
-      arg :id, :id
-      resolve &BookResolver.book_get/3
-    end
-
-    field :books, list_of(:book) do
-      arg :offset, :integer
-      arg :limit, :integer
-      resolve &BookResolver.book_list/3
-    end
-  end
 end
 ```
 
